@@ -2,7 +2,7 @@
 
 ## OSI
 
-![OSI Schichtenmodel mit Beispielen](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/img/OSI Modell.png)
+![OSI Schichtenmodel mit Beispielen](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/OSI Modell.png)
 
 ## Topologien
 
@@ -423,6 +423,3 @@
 > * Realisierung von Speicherzellen möglich
 > * Eignung zur Realisierung von Steuererwerken (in Form endlicher Automaten)
 > * Im Gegensatz zu gewöhnlichen **Gate Arrays** (**GA**) sind FPGAs programmierbare Logikbausteine, deren Funktionalität durch das Zusammenschalten verschiedener Funktionsblöcke erreicht wird
-
-
-
