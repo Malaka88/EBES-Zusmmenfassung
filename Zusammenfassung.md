@@ -6,6 +6,136 @@
 
 ## Topologien
 
+**Bus:**
+
+![Bustopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Bustopologie.png)
+
+* Anzahl zerstörter Verbindungen = 1 (nur Ausgefallener Knoten ist betroffen)
+* minimalem Aufwand beim Anschluss neuer Knoten
+* zunehmende Kollision bei Überlastung
+
+| Eigenschaft                    | Wert                                   |
+| ------------------------------ | -------------------------------------- |
+| Anschlüsse                     | 1                                      |
+| Anzahl zerstörter Verbindungen | 1 (nur Ausgefallener Knoten Betroffen) |
+| max. Entfernung                | n-1                                    |
+
+**Ring**
+
+![Ringtopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Ringtopologie.png)
+
+* einfach und kostengünstig
+
+| Eigenschaft                    | Wert          |
+| ------------------------------ | ------------- |
+| Anschlüsse                     | 2             |
+| Anzahl zerstörter Verbindungen | 2             |
+| max. Entfernung                | $\frac{n}{2}$ |
+
+**Kette**
+
+* einfach und kostengünstig
+
+| Eigenschaft                    | Wert  |
+| ------------------------------ | ----- |
+| Anschlüsse                     | 2     |
+| Anzahl zerstörter Verbindungen | 1     |
+| max. Entfernung                | $n-1$ |
+
+**Barrel Shifter:**
+
+* Erweiterung des Rings um zusätzliche Verbindungen
+* Überspringen eines oder mehrerer Knoten möglich
+* Anzahl von Anschlüssen einer Station wird erhöht
+* verringert max. Entfernung
+* erhöht die Redundanz durch alternative Wege
+
+| Eigenschaft                    | Wert                     |
+| ------------------------------ | ------------------------ |
+| Anschlüsse                     |                          |
+| Anzahl zerstörter Verbindungen | $2 \cdot log_{2}(n) - 1$ |
+| max. Entfernung                |                          |
+
+**Baumtopologie:**
+
+* geeignet für Broadcastartige Kommunikation (von der Wurzel aus)
+* Engpass ist der Pfad über die Wurzel
+
+| Eigenschaft                    | Wert     |
+| ------------------------------ | -------- |
+| Anschlüsse                     |          |
+| Anzahl zerstörter Verbindungen | 1        |
+| max. Entfernung                | $log(n)$ |
+
+**Sterntopologie**
+
+![Sterntopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Sterntopologie.png)
+
+* Spezialfall eines einstufigen Baums
+* Große Anzahl von Anschlüssen an der Zentralstation
+* Hauptlast liegt auf der Zentralstation
+* Zentralstation = Single Point of Failuer (Ausfall = Totalausfall)
+* Anschluss neuer Knoten sorgt für höhere Last auf der Zentralstation
+
+| Eigenschaft                    | Wert                   |
+| ------------------------------ | ---------------------- |
+| Anschlüsse                     | 1 (Zentralstation = n) |
+| Anzahl zerstörter Verbindungen | 1                      |
+| max. Entfernung                | 2                      |
+
+**2D-Gitter:**
+
+* Jeder Knoten ist mit 4 Nachbarn verbunden
+* leicht Skalierbar
+
+| Eigenschaft                    | Wert               |
+| ------------------------------ | ------------------ |
+| Anschlüsse                     |                    |
+| Anzahl zerstörter Verbindungen | 2 (beim Eckknoten) |
+| max. Entfernung                | $\sqrt{n}$         |
+
+**3D-Torus:**
+
+* 6 Anschlüsse pro Station
+
+| Eigenschaft                    | Wert                      |
+| ------------------------------ | ------------------------- |
+| Anschlüsse                     | 6                         |
+| Anzahl zerstörter Verbindungen | $2 \cdot n^{\frac{2}{3}}$ |
+| max. Entfernung                | $\sqrt{3}{n}$             |
+
+  
+
+**Vollvermascht:**
+
+* Jede Station ist mit jeder Station verbunden
+* sehr hoher Hardwareaufwand
+* nur bei kleiner Anzahl von Stationen realisierbar
+
+| Eigenschaft                    | Wert  |
+| ------------------------------ | ----- |
+| Anschlüsse                     | n     |
+| Anzahl zerstörter Verbindungen | $n-1$ |
+| max. Entfernung                | 1     |
+
+
+
+# Bussysteme
+
+**LIN**
+
+* geringe Anforderungen gegenüber CAN
+* kostengünstig
+* geringe Datenrate
+* Einsatz: Sitze, Türen, Dach, Klimaanlage, Steuereinheiten (Motorsteuerung)
+
+| Eigenschaft      | Wert                                      |
+| ---------------- | ----------------------------------------- |
+| Übertragungsrate | 1-20 kbit/s                               |
+| Teilnehmer       | max. 16 Knoten                            |
+| Daten/Nachricht: | 1-8 Byte (ab Version 2.0 oder höher)      |
+| Busmanagement:   | Master/Slave (Zeitslots, deterministisch) |
+
 
 
 # Echtzeitsysteme
