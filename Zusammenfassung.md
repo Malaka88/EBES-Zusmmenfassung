@@ -122,21 +122,109 @@
 
 # Bussysteme
 
-**LIN**
+## **LIN** (Local Interconnect Network)
 
 * geringe Anforderungen gegenüber CAN
 * kostengünstig
 * geringe Datenrate
 * Einsatz: Sitze, Türen, Dach, Klimaanlage, Steuereinheiten (Motorsteuerung)
 
-| Eigenschaft      | Wert                                      |
-| ---------------- | ----------------------------------------- |
-| Übertragungsrate | 1-20 kbit/s                               |
-| Teilnehmer       | max. 16 Knoten                            |
-| Daten/Nachricht: | 1-8 Byte (ab Version 2.0 oder höher)      |
-| Busmanagement:   | Master/Slave (Zeitslots, deterministisch) |
+| Eigenschaft        | Wert                                      |
+| ------------------ | ----------------------------------------- |
+| Übertragungsmedium |                                           |
+| Übertragungsrate   | 1-20 kbit/s                               |
+| Teilnehmer         | max. 16 Knoten                            |
+| Daten/Nachricht:   | 1-8 Byte (ab Version 2.0 oder höher)      |
+| Busmanagement:     | Master/Slave (Zeitslots, deterministisch) |
+| Einsatzgebiet      | KFZ (Sitze, Türen, Dach, Klimaanlagen)    |
 
+## **CAN** (Controller Area Network)
 
+* vernetzung komplexer Controller und Steuergeräte
+* Echtzeitfähig (verbesserung in TTCAN)
+* preisgünstig aufgrund von hoher Stückzahl
+* max. Übertragungsrate in der Praxis effektiv 500kBit/s
+* max. Teilnehmer kann durch Aufteilung in Segmenten erhöht werden
+
+| Eigenschaft           | Wert                                              |
+| --------------------- | ------------------------------------------------- |
+| Übertragungsmedium    | verdrillte Zweidrahtleitung                       |
+| Übertragungsrate      | 10kbit/s (bei wenigen Kilometern) - 1MBit/s (40m) |
+| Teilnehmer            | max. 32 Knoten                                    |
+| Daten/Nachricht:      | max. 8 Byte                                       |
+| Busmanagement:        | serieller Multi-Master-Bus                        |
+| Buszugriffsverfahren: | CSMA/CA                                           |
+| Einsatzgebiet         | KFZ, Haushaltsgeräte, Medizintechnik              |
+
+## LON (Local Operating Network)
+
+* 
+
+| Eigenschaft           | Wert                                                       |
+| --------------------- | ---------------------------------------------------------- |
+| Übertragungsmedium    | verdrillte Zweidrahtleitung und Funk                              |
+| Übertragungsrate      | 4,9 kBit/s (Funk 49 MHZ) - 1.25 MBit/s (Zweidraht 500m)    |
+| Teilnehmer            | max. 32000 (127 Endpunkte pro Subnetz, 255 Subnetze)       |
+| Daten/Nachricht:      |                                                            |
+| Busmanagement:        |                                                            |
+| Buszugriffsverfahren: | CSMA/CD                                                    |
+| Einsatzgebiet         | verteilte industrieelle Anendungen, Gebäudeautomatisierung |
+
+## **EIB** (European Installation Bus)
+
+* 
+
+| Eigenschaft           | Wert                                              |
+| --------------------- | ------------------------------------------------- |
+| Übertragungsmedium    |                        |
+| Übertragungsrate      |  |
+| Teilnehmer            |   |
+| Daten/Nachricht:      |  |
+| Busmanagement:        |  |
+| Buszugriffsverfahren: |   |
+| Einsatzgebiet         |   |
+
+## **Profibus** (Process Field Bus)
+
+* 
+
+| Eigenschaft           | Wert                                              |
+| --------------------- | ------------------------------------------------- |
+| Übertragungsmedium    |                        |
+| Übertragungsrate      |  |
+| Teilnehmer            |   |
+| Daten/Nachricht:      |  |
+| Busmanagement:        |  |
+| Buszugriffsverfahren: |   |
+| Einsatzgebiet         |   |
+
+## **FlexRay** 
+
+* 
+
+| Eigenschaft           | Wert                                              |
+| --------------------- | ------------------------------------------------- |
+| Übertragungsmedium    |                        |
+| Übertragungsrate      |  |
+| Teilnehmer            |   |
+| Daten/Nachricht:      |  |
+| Busmanagement:        |  |
+| Buszugriffsverfahren: |   |
+| Einsatzgebiet         |   |
+
+## **MOST** (Media Oriented System Transport)
+
+* 
+
+| Eigenschaft           | Wert                                              |
+| --------------------- | ------------------------------------------------- |
+| Übertragungsmedium    |                        |
+| Übertragungsrate      |  |
+| Teilnehmer            |   |
+| Daten/Nachricht:      |  |
+| Busmanagement:        |  |
+| Buszugriffsverfahren: |   |
+| Einsatzgebiet         |   |
 
 # Echtzeitsysteme
 
