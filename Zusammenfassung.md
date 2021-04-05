@@ -2,13 +2,13 @@
 
 ## OSI
 
-![OSI Schichtenmodel mit Beispielen](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/OSI Modell.png)
+![OSI Schichtenmodel mit Beispielen](img/OSI_Modell.png)
 
 ## Topologien
 
 **Bus:**
 
-![Bustopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Bustopologie.png)
+![Bustopologie](img/Bustopologie.png)
 
 * Anzahl zerstörter Verbindungen = 1 (nur Ausgefallener Knoten ist betroffen)
 * minimalem Aufwand beim Anschluss neuer Knoten
@@ -22,7 +22,7 @@
 
 **Ring**
 
-![Ringtopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Ringtopologie.png)
+![Ringtopologie](img/Ringtopologie.png)
 
 * einfach und kostengünstig
 
@@ -69,7 +69,7 @@
 
 **Sterntopologie**
 
-![Sterntopologie](/home/sebastian/Dokumente/Privat/Studium/WBH/Entwurf und Kommunikation Eingebetteter Systeme/Zusammenfassung/img/Sterntopologie.png)
+![Sterntopologie](img/Sterntopologie.png)
 
 * Spezialfall eines einstufigen Baums
 * Große Anzahl von Anschlüssen an der Zentralstation
