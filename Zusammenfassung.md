@@ -118,7 +118,98 @@
 | Anzahl zerstörter Verbindungen | $n-1$ |
 | max. Entfernung                | 1     |
 
+## Leitungscodierung
 
+* **selbsttaktende Leitungscodes** 
+  * ermöglichen Taktrückgewinnung aus dem Datenstrom
+  * wird bei der **synchronen seriellen** Datenübertragung benötigt (alle Rechnernetze inkl. Sensor-Aktuator- und Feldbusse)
+  * setzt einen regelmäßigen Wechsel zwischen 0 und 1 Pegel voraus
+  * Sicherstellung von Signalen die keine zu langen Eins- bzw. Nullfolgen ohne Flankenwechsel haben
+  * Takt kann aus den Flanken rekonstruiert werden
+* **gleichstromfreie Leitungscodes**
+  * Leitungscodes ohne Gleichanteil im Signal
+  * Datenübertragung über Stromversorgungsleitung möglich, sofern eine Gleichspannung als Energieversorgung verwendet wird.
+  * Senke kann durch Tiefpass den Gleichanteil der Energieversorgung und durch einen Hochpass das Datensignal herausfiltern.
+
+### NRZ-Codierung (Non Return to Zero)
+
+| Eigenschaften       | Wert                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| Taktrückgewinnung   | nicht gegeben                                                |
+| Gleichstromfreiheit | nein                                                         |
+| Logische 1          | High-Pegel                                                   |
+| Logische 0          | Low-Pegel                                                    |
+| Pegelwechsel        | Bei jedem wechsel von logischer 1 und 0                      |
+| Anwendungsbereich   | asynchrone Übertragung, bei der Synchronisation durch Rahmendaten erfolgt |
+
+### RZ-Codierung (Return to Zero)
+
+| Eigenschaften          | Wert                                    |
+| ---------------------- | --------------------------------------- |
+| Taktrückgewinnung      | nicht gegeben                           |
+| Gleichstromfreiheit    | nein                                    |
+| Logische 1             | Heigh-Pegel                             |
+| Logische 0             | Low-Pegel                               |
+| Pegelwechsel           | nach halber Taktperiode zurück auf Null |
+| Bandbreitenanforderung | 2 * NRZ                                 |
+
+### NRZI-Codierung (Non Return to Zero Inverted)
+
+| Eigenschaften          | Wert                   |
+| ---------------------- | ---------------------- |
+| Taktrückgewinnung      | nicht gegeben          |
+| Gleichstromfreiheit    | nein                   |
+| Logische 1             | wechsel des Pegels     |
+| Logische 0             | beibehalten des Pegels |
+| Pegelwechsel           | bei jeder logischen 1  |
+| Bandbreitenanforderung | NRZ                    |
+
+### Bipolar-Codierung
+
+| Eigenschaften          | Wert                                        |
+| ---------------------- | ------------------------------------------- |
+| Taktrückgewinnung      | nicht gegeben                               |
+| Gleichstromfreiheit    | ja                                          |
+| Logische 1             | Pegel = +1 und -1 im wechsel (alternierend) |
+| Logische 0             | 0-Pegel                                     |
+| Pegelwechsel           | bei jeder logischen 1                       |
+| Bandbreitenanforderung |                                             |
+
+### Manchester-Codierung
+
+| Eigenschaften          | Wert                                       |
+| ---------------------- | ------------------------------------------ |
+| Taktrückgewinnung      | Ja                                         |
+| Gleichstromfreiheit    | nur bei Verwendung eines Bipolaren Signals |
+| Logische 1             | Flanke Taktmitte 0 -> 1                    |
+| Logische 0             | Flanke Taktmitte 1 -> 0                    |
+| Pegelwechsel           | zu beginn und zur Mitte des Takts          |
+| Bandbreitenanforderung | 2 * NRZ                                    |
+| Anwendung              | Teil des Ethernet-Standards                |
+
+### Differential-Manchester-Codierung
+
+| Eigenschaften       | Wert                           |
+| ------------------- | ------------------------------ |
+| Taktrückgewinnung   | Ja                             |
+| Gleichstromfreiheit |                                |
+| Logische 1          | kein Flankenwechsel Taktanfang |
+| Logische 0          | Flankenwechsel Taktanfang      |
+| Pegelwechsel        | zur Taktmitte                  |
+| Anwendung           | Tokenring                      |
+
+### 4B/5B-Codierung
+
+* Blöcke aus 4 Bit werden zu 5 Bit kodiert
+* Es folgen nie mehr als 3 Nullen aufeinander
+* die 5 Bit werden **NRZI** Codiert zur Vermeidung zu langer 1-Folgen
+
+| Eigenschaften          | Wert                       |
+| ---------------------- | -------------------------- |
+| Taktrückgewinnung      | Ja                         |
+| Gleichstromfreiheit    |                            |
+| Bandbreitenanforderung | 1,25 NRZ                   |
+| Anwendung              | FDDI (100MBit/s Tokenring) |
 
 # Bussysteme
 
@@ -304,7 +395,13 @@
 
 
 
+# Routing
 
+## Dijkstra-Algorithmus
+
+* Gerichteter, Kantenbewerteter Graph
+* Algorithmus zur Bestimmung des kürzesten Wegs zwischen zwei Punkten
+* Gewichtung nicht von den Hops abhängig sondern nur von den Wegekosten
 
 # Embedded Systems
 
