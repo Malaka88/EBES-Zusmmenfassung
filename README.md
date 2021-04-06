@@ -146,10 +146,10 @@
 
 | Eigenschaften          | Wert                                    |
 | ---------------------- | --------------------------------------- |
-| Taktrückgewinnung      | nicht gegeben                           |
+| Taktrückgewinnung      | möglich                                 |
 | Gleichstromfreiheit    | nein                                    |
-| Logische 1             | Heigh-Pegel                             |
-| Logische 0             | Low-Pegel                               |
+| Logische 1             | Heigh-Pegel (+1)                        |
+| Logische 0             | Low-Pegel (-1)                          |
 | Pegelwechsel           | nach halber Taktperiode zurück auf Null |
 | Bandbreitenanforderung | 2 * NRZ                                 |
 
@@ -164,7 +164,18 @@
 | Pegelwechsel           | bei jeder logischen 1  |
 | Bandbreitenanforderung | NRZ                    |
 
-### Bipolar-Codierung
+### Unipolare RZ-Codierung
+
+| Eigenschaften          | Wert                                    |
+| ---------------------- | --------------------------------------- |
+| Taktrückgewinnung      | nicht gegeben                           |
+| Gleichstromfreiheit    | nein                                    |
+| Logische 1             | Heigh-Pegel (+1)                        |
+| Logische 0             | Low-Pegel (0)                           |
+| Pegelwechsel           | nach halber Taktperiode zurück auf Null |
+| Bandbreitenanforderung | 2 * NRZ                                 |
+
+### Bipolare RZ-Codierung
 
 | Eigenschaften          | Wert                                        |
 | ---------------------- | ------------------------------------------- |
@@ -197,6 +208,17 @@
 | Logische 0          | Flankenwechsel Taktanfang      |
 | Pegelwechsel        | zur Taktmitte                  |
 | Anwendung           | Tokenring                      |
+
+### AMI (Alternate Mark Inversion Code)
+
+| Eigenschaften       | Wert                             |
+| ------------------- | -------------------------------- |
+| Taktrückgewinnung   | Ja                               |
+| Gleichstromfreiheit | Ja                               |
+| Logische 1          | 0-Pegel                          |
+| Logische 0          | Pegel = +1 und -1 (alternierend) |
+| Pegelwechsel        | zur Taktmitte                    |
+| Anwendung           | Tokenring                        |
 
 ### 4B/5B-Codierung
 
