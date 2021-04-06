@@ -131,27 +131,27 @@
   * Datenübertragung über Stromversorgungsleitung möglich, sofern eine Gleichspannung als Energieversorgung verwendet wird.
   * Senke kann durch Tiefpass den Gleichanteil der Energieversorgung und durch einen Hochpass das Datensignal herausfiltern.
 
-### NRZ-Codierung (Non Return to Zero)
+### (Unipolarer) NRZ-Codierung (Non Return to Zero)
 
 | Eigenschaften       | Wert                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | Taktrückgewinnung   | nicht gegeben                                                |
 | Gleichstromfreiheit | nein                                                         |
-| Logische 1          | High-Pegel                                                   |
-| Logische 0          | Low-Pegel                                                    |
+| Logische 1          | High-Pegel (+1)                                              |
+| Logische 0          | Low-Pegel (0)                                                |
 | Pegelwechsel        | Bei jedem wechsel von logischer 1 und 0                      |
 | Anwendungsbereich   | asynchrone Übertragung, bei der Synchronisation durch Rahmendaten erfolgt |
 
-### RZ-Codierung (Return to Zero)
+### (Bipolarer) NRZ-Codierung (Non Return to Zero)
 
-| Eigenschaften          | Wert                                    |
-| ---------------------- | --------------------------------------- |
-| Taktrückgewinnung      | möglich                                 |
-| Gleichstromfreiheit    | nein                                    |
-| Logische 1             | Heigh-Pegel (+1)                        |
-| Logische 0             | Low-Pegel (-1)                          |
-| Pegelwechsel           | nach halber Taktperiode zurück auf Null |
-| Bandbreitenanforderung | 2 * NRZ                                 |
+| Eigenschaften       | Wert                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| Taktrückgewinnung   | nicht gegeben                                                |
+| Gleichstromfreiheit | nein                                                         |
+| Logische 1          | High-Pegel (+1)                                              |
+| Logische 0          | Low-Pegel (-1)                                               |
+| Pegelwechsel        | Bei jedem wechsel von logischer 1 und 0                      |
+| Anwendungsbereich   | asynchrone Übertragung, bei der Synchronisation durch Rahmendaten erfolgt |
 
 ### NRZI-Codierung (Non Return to Zero Inverted)
 
@@ -163,6 +163,17 @@
 | Logische 0             | beibehalten des Pegels |
 | Pegelwechsel           | bei jeder logischen 1  |
 | Bandbreitenanforderung | NRZ                    |
+
+### RZ-Codierung (Return to Zero)
+
+| Eigenschaften          | Wert                                    |
+| ---------------------- | --------------------------------------- |
+| Taktrückgewinnung      | möglich                                 |
+| Gleichstromfreiheit    | nein                                    |
+| Logische 1             | Heigh-Pegel (+1)                        |
+| Logische 0             | Low-Pegel (-1)                          |
+| Pegelwechsel           | nach halber Taktperiode zurück auf Null |
+| Bandbreitenanforderung | 2 * NRZ                                 |
 
 ### Unipolare RZ-Codierung
 
@@ -186,14 +197,14 @@
 | Pegelwechsel           | bei jeder logischen 1                       |
 | Bandbreitenanforderung |                                             |
 
-### Manchester-Codierung
+### Manchester-Codierung (IEEE 802.3)
 
 | Eigenschaften          | Wert                                       |
 | ---------------------- | ------------------------------------------ |
 | Taktrückgewinnung      | Ja                                         |
 | Gleichstromfreiheit    | nur bei Verwendung eines Bipolaren Signals |
-| Logische 1             | Flanke Taktmitte 0 -> 1                    |
-| Logische 0             | Flanke Taktmitte 1 -> 0                    |
+| Logische 1             | steigende Flanke                           |
+| Logische 0             | fallende Flanke                            |
 | Pegelwechsel           | zu beginn und zur Mitte des Takts          |
 | Bandbreitenanforderung | 2 * NRZ                                    |
 | Anwendung              | Teil des Ethernet-Standards                |
@@ -215,10 +226,10 @@
 | ------------------- | -------------------------------- |
 | Taktrückgewinnung   | Ja                               |
 | Gleichstromfreiheit | Ja                               |
-| Logische 1          | 0-Pegel                          |
-| Logische 0          | Pegel = +1 und -1 (alternierend) |
-| Pegelwechsel        | zur Taktmitte                    |
-| Anwendung           | Tokenring                        |
+| Logische 1          | Pegel = +1 und -1 (alternierend) |
+| Logische 0          | 0-Pegel                          |
+| Pegelwechsel        | im Takt                          |
+| Anwendung           |                                  |
 
 ### 4B/5B-Codierung
 
