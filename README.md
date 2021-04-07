@@ -426,7 +426,74 @@
 * Verfügbarkeit für verschiedene Prozessorarchitekturen
 * optimierte Werkzeuge zur Entwicklung von Echtzeitanwendungen
 
+### Task
 
+* ist ein Ausführbares Programm inkl. aller dazu gahöriger aktueller Werte, Register, Variablen und Betriebsmittel (Speicher, I/O, Signale, usw.)
+* Organisation in der **Task Control Block** (**TCB**) oder **Process Control Block** (**PCB**) Tabelle
+* Der **PCB** enthält die Prozessinformationen sowie CPU- und Systemkontext für den jeweiligen Task.
+* Die Prozessinformationen definieren den **Prozesszustand** (erzeugt, lauffähig, laufend, suspendiert, terminiert) sowie die **Prozesspriarität** (hoch, mittel, niedrig)
+
+### Scheduler
+
+* Zuordnung der Ausführungsreihenfolge von Prozessen bzw. Tasks (genannt Schedule)
+  * Entscheidet anhand der Prozesspriarität welchem Lauffähigen Programm die CPU zugeordnet wird.
+* zentrale Instanz eines Echtzeitbetriebssystems
+* **zulässig** (feasible) wenn **alle Zeitbedingungen aller Tasks** im System **erfüllt sind** (keine Deadlines werden überschritten)
+* **schedulebar** heißen Systeme, die für jede mögliche Aktivierungssequenz einen zulässigen Schedule besitzen
+* **präemptives** (unterbrechendes) **Sheduling**:
+  * von den meisten Echtzeitsystemen unterstützt
+  * Tasks mit höherer Priorität unterbrechen laufende Tasks mit niedrigerer Priorität
+* **kooperative Scheduling**:
+  * Tasks geben freiwillig (zu einem ihm passenden Zeitpunkt) die CPU ab
+* **Dispatcher** (Verteiler, operative Komponente):
+  * zuständig für den Systemkontextwechsel (context switch)
+  * wechsel von einem Task zu nächsten
+
+#### Round-Robin-Verfahren
+
+| Eigenschaft   | Wert                                                         |
+| ------------- | ------------------------------------------------------------ |
+| Beschreibung  | Jeder Task erhält einen gleichmäßigen Anteil der Rechenzeit. Dies **Zeitscheibe** (**time slice**) wird dabei so kurz gewählt, dass keine bemerkbaren Verzögerungen auftreten. |
+| Einsatzgebiet | Mehrbenutzerbetriebssysteme/Timesharingsysteme (Linux, Windows NT, Unix...) |
+| Echtzeitfähig | nein                                                         |
+|               |                                                              |
+|               |                                                              |
+
+#### Earliest Deadline First Scheduling-Algorithmus (EDF)
+
+* neigt zu überflüssigen Kontextwechsel
+* unterbricht laufende Prozesse zu gunsten Prozesse mit kürzerer Laufzeit
+* Berechnung der Laufzeit sporadischer Tasks ist aufwendig
+
+| Eigenschaft   | Wert                                                         |
+| ------------- | ------------------------------------------------------------ |
+| Beschreibung  | Task mit nächstliegender Deadline wird ausgeführt.           |
+| Besonderheit  | Produziert für jedes schedulebare Prozesssystem einen zulässigen Schedule |
+| Einsatzgebiet | findet in der Praxis kaum Verwendung                         |
+| Echtzeitfähig |                                                              |
+|               |                                                              |
+
+### Raten-monotone Scheduling (RMS)
+
+| Eigenschaft   | Wert |
+| ------------- | ---- |
+| Beschreibung  |      |
+| Einsatzgebiet |      |
+| Echtzeitfähig |      |
+|               |      |
+|               |      |
+
+### Multitasking
+
+Hierbei werden mehrere Task scheinbar parallel (gleichzeitig) verarbeitet. Dabei wird die CPU unter den Tasks zeitlich aufgeteilt. Der wechsel erfolgt dabei meist so schnell das der Eindruck entsteht, das die Tasks gleichzeitig Ablaufen.
+
+**Echtzeitbetriebssysteme** sind durchweg Multitasking-fähig, hierbei werden sie durch:
+
+* Interrupts (Unterbrechungen)
+* Timeouts (Zeitabläufen)
+* Input events (Eingabeereignisse)
+
+gesteuert.
 
 # Routing
 
