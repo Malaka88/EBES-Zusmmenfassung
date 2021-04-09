@@ -118,6 +118,14 @@
 | Anzahl zerstörter Verbindungen | $n-1$ |
 | max. Entfernung                | 1     |
 
+## Routing
+
+### Dijkstra-Algorithmus
+
+* Gerichteter, Kantenbewerteter Graph
+* Algorithmus zur Bestimmung des kürzesten Wegs zwischen zwei Punkten
+* Gewichtung nicht von den Hops abhängig sondern nur von den Wegekosten
+
 ## Leitungscodierung
 
 * **selbsttaktende Leitungscodes** 
@@ -244,6 +252,41 @@
 | Bandbreitenanforderung | 1,25 NRZ                   |
 | Anwendung              | FDDI (100MBit/s Tokenring) |
 
+## Medien Zugangskontrolle (MAC-Teilschicht)
+
+### Aloha-Verfahren
+
+* Medienzugriffsverfahren nach zufälligen Strategien
+* Einsatz in einem funkbasierten Forschungsnetz auf Hawaii
+* **alle sende** bereiten Teilnehmer senden **sofort** (ohne Erlaubnis und ohne Prüfung ob das Medium belegt ist)
+* gleichzeitiges Senden von Teilnehmern führt zur Überlagerung und Verfälchung der Daten -> Empfänger erkennt die Daten nicht mehr
+* Einführung von Quittungssignalen zur quittierung des korrekten Empfangs
+* Bei ausbleiben der Quittung wird die Sendung wiederholt
+* Mehrfaches versenden belastet den Kanal zusätzlich
+* selbst bei geringer Kanalbelegung ist die Anzahl der Kollisionen ausreichend das die Übertragung merklich verzögert wird
+* Einsatz nur bei einer Kanalbelegung unter 20%
+
+### CSMA-Protokoll (Cerrier Sense Multiple Access)
+
+* Sendewillige **Station hört **den Kanals vor dem Senden **ab** -> Übertragung beginnt bei freiem Kanal
+* Erhebliche Kollisionsreduktion gegenüber Aloha
+* Quittungsbasiertes Verfahren (Quittieren des korrekten Empfangs)
+
+#### CSMA/CD (CD = collision detect)
+
+* **Kollisionserkennung**
+* Bei frei werdendem Kanal **Sendet der Teilnehmer** und **liest gleichzeitig** auf dem Kanal mit
+* Sind gesendetes und abgehörtes Signal gleich, erhält der Teilnehmer nach einer Abitrierungszeit bis zum Ende der Übertragung seines Rahmes den Bus
+* Durch gleichzeitiges Senden und Lesen kann eine Kollision schnell erkannt werden
+* Übertragung wird bei Kollision direkt abgebrochen und sendet ein **Störsignal** (**jam-Signal**)
+* Dieses **Störsignal** lässt auch alle anderen Teilnehmer die gerade Senden die Übertragung abbrechen
+* Keine Quittierung des Empfangs erforderlich!
+
+#### CSMA/CA (CA = collision avoidance)
+
+* **Kollisionsvermeidung**
+* 
+
 # Bussysteme
 
 ## **LIN** (Local Interconnect Network)
@@ -294,19 +337,22 @@
 | Buszugriffsverfahren: | CSMA/CD                                                    |
 | Einsatzgebiet         | verteilte industrieelle Anendungen, Gebäudeautomatisierung |
 
-## **EIB** (European Installation Bus)
+## EIB** (European Installation Bus)
 
-* 
+* spezifiziert durch die EIBA (EIB Assoziation)
+* über zwei Ebenen hierarchisch unterteilt.
+* durch Koppler wird die Last des Gesamtnetzes verringert (ähnlich Router und Switches)
+* Aufmodulierung des Datensignals auf 28-V Gleichspannung
 
-| Eigenschaft           | Wert                                              |
-| --------------------- | ------------------------------------------------- |
-| Übertragungsmedium    |                        |
-| Übertragungsrate      |  |
-| Teilnehmer            |   |
-| Daten/Nachricht:      |  |
-| Busmanagement:        |  |
-| Buszugriffsverfahren: |   |
-| Einsatzgebiet         |   |
+| Eigenschaft           | Wert                                                        |
+| --------------------- | ----------------------------------------------------------- |
+| Übertragungsmedium    |                                                             |
+| Übertragungsrate      | 9600 Bit/s                                                  |
+| Teilnehmer            | max. 11500 (12 Linien zu je 64 Teilnehmern in 15 Bereichen) |
+| Daten/Nachricht:      | UART-Zeichen (23 Zeichen pro Nachricht)                     |
+| Busmanagement:        |                                                             |
+| Buszugriffsverfahren: | CSMA/CA                                                     |
+| Einsatzgebiet         | Gebäudeautomatisierung Zweckbau und Privat                  |
 
 ## **Profibus** (Process Field Bus)
 
@@ -395,6 +441,24 @@
   * ggf. puffern kurzer Signale
   * planbares zeitliches Verhalten sämtlicher Systemaktivitäten
   * Prüfbar ob Echtzeitanforderungen eingehalten werden können.
+
+## Systemeinteilung
+
+Bei einer Büroanwendung handelt es sich um ein rein **transformationelles** oder **interaktives** System, bei einem eingebetteten System dagegen um ein **reaktives** System. 
+
+### Reaktive Systeme
+
+* müssen ständig mit ihrer Umgebung interagieren
+* Geschwindigkeit und Art und Weise wird durch die Umgebung vorgegeben
+
+### Interaktive Systeme
+
+* kommunizieren mit ihrem Benutzer
+* bestimmen die Art und Weise sowie Geschwindigkeit der Interaktion selbst
+
+### Transformationelle Systeme
+
+* führen keine Kommunikation mit der Umgebung
 
 ## Echtzeitbetriebssysteme
 
@@ -495,14 +559,6 @@ Hierbei werden mehrere Task scheinbar parallel (gleichzeitig) verarbeitet. Dabei
 
 gesteuert.
 
-# Routing
-
-## Dijkstra-Algorithmus
-
-* Gerichteter, Kantenbewerteter Graph
-* Algorithmus zur Bestimmung des kürzesten Wegs zwischen zwei Punkten
-* Gewichtung nicht von den Hops abhängig sondern nur von den Wegekosten
-
 # Embedded Systems
 
 > Ein **verteiltes System** besteht aus Komponenten, die räumlich oder logisch verteilt sind und mittels einer Kopplung bzw. Vernetzung zum Erreichen der Funktionalität des Gesamtsystems beitragen.
@@ -586,10 +642,6 @@ gesteuert.
 * technische Systemumgebung
 * menschliche Systembenutzer
 
-
-
-
-
 # Definitionen
 
 > Als **Steuergerät** (engl. **Electronic Control Unit**, **ECU**) wird die eigentliche Steuereinheit eines mechatronischen Systems verstanden.
@@ -619,4 +671,4 @@ gesteuert.
 >   * nicht rekonfigurierbare (einmal Konfiguriert immer Konfiguriert, umsetzung durch physikalische Zerstörung der nicht benötigten Verbindungsleitungen)
 > * Realisierung von Speicherzellen möglich
 > * Eignung zur Realisierung von Steuererwerken (in Form endlicher Automaten)
-> * Im Gegensatz zu gewöhnlichen **Gate Arrays** (**GA**) sind FPGAs programmierbare Logikbausteine, deren Funktionalität durch das Zusammenschalten verschiedener Funktionsblöcke erreicht wird
+> * Im Gegensatz zu gewöhnlichen **Gate Arrays** (**GA**) sind FPGAs programmierbare Logikbausteine, deren Funktionalität durch das Zusammenschalten verschiedener Funktionsblöcke erreicht wird 
